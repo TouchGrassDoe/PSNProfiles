@@ -4,7 +4,7 @@ VERSION 0.1 (BUILD 1)
 
 Whats currently available:
 - Viewing PSNProfiles utilising WebView
-- Ligh/Dark mode iconset (iOS 18.x only)
+- Light/Dark mode iconset (iOS 18.x only)
 - Site navigation (minimal, on-screen navigation not added yet)
 
 Features to be added:
