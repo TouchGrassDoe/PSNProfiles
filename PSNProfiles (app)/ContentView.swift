@@ -10,17 +10,14 @@ import WebKit
 
 struct ContentView: View {
     @State private var webView: WKWebView?
-    @State private var canGoBack = false
-    @State private var canGoForward = false
+    @State private var canGoBack = true
+    @State private var canGoForward = true
     let homeURL = URL(string: "https://PSNProfiles.com")!
 
     var body: some View {
         TabView {
             NavigationView {
                 WebView(canGoBack: $canGoBack, canGoForward: $canGoForward, url: homeURL)
-                    .onAppear {
-                        webView = WKWebView()
-                    }
                     .navigationTitle("PSNProfiles")
             }
             .tabItem {

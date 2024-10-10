@@ -9,8 +9,13 @@ import SwiftUI
 import WebKit
 
 struct WebView: UIViewRepresentable {
+    @Binding var canGoBack: Bool
+    @Binding var canGoForward: Bool
+    var url: URL
+
     class Coordinator: NSObject, WKNavigationDelegate {
         var parent: WebView
+        var webView: WKWebView?
 
         init(parent: WebView) {
             self.parent = parent
@@ -19,12 +24,21 @@ struct WebView: UIViewRepresentable {
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             parent.canGoBack = webView.canGoBack
             parent.canGoForward = webView.canGoForward
+            self.webView = webView
+        }
+
+        @objc func handleBackSwipe() {
+            if let webView = webView, parent.canGoBack {
+                webView.goBack()
+            }
+        }
+
+        @objc func handleForwardSwipe() {
+            if let webView = webView, parent.canGoForward {
+                webView.goForward()
+            }
         }
     }
-
-    @Binding var canGoBack: Bool
-    @Binding var canGoForward: Bool
-    var url: URL
 
     func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)
@@ -32,11 +46,26 @@ struct WebView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
+        context.coordinator.webView = webView
         webView.navigationDelegate = context.coordinator
-        webView.load(URLRequest(url: url))
+
+        let backSwipe = UISwipeGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleBackSwipe))
+        backSwipe.direction = .right
+        webView.addGestureRecognizer(backSwipe)
+
+        let forwardSwipe = UISwipeGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleForwardSwipe))
+        forwardSwipe.direction = .left
+        webView.addGestureRecognizer(forwardSwipe)
+
+        load(url: url, in: webView)
         return webView
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
+    }
+
+    private func load(url: URL, in webView: WKWebView) {
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
 }

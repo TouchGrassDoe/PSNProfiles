@@ -12,9 +12,6 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
-            Text("General")
-                .font(.largeTitle)
-                .padding()
 
             Toggle(isOn: $isDarkMode) {
                 Text("Dark Mode")
@@ -30,7 +27,7 @@ struct SettingsView: View {
 
             Spacer()
 
-            Text("©️ 2024 Aaron Doe. All rights reserved. (v0.2)")
+            Text("©️ 2024 Aaron Doe. All rights reserved. (v0.3)")
                 .font(.footnote)
                 .foregroundColor(.gray)
                 .padding()
