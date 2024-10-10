@@ -1,7 +1,5 @@
 Very early build of a project I'm working on written in SwiftUI for PSNProfiles.
 
-VERSION 0.1 (BUILD 1)
-
 Whats currently available:
 - Viewing PSNProfiles 
 - Light/Dark mode iconset
