@@ -9,21 +9,34 @@ import SwiftUI
 import WebKit
 
 struct WebView: UIViewRepresentable {
+    class Coordinator: NSObject, WKNavigationDelegate {
+        var parent: WebView
 
+        init(parent: WebView) {
+            self.parent = parent
+        }
+
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            parent.canGoBack = webView.canGoBack
+            parent.canGoForward = webView.canGoForward
+        }
+    }
+
+    @Binding var canGoBack: Bool
+    @Binding var canGoForward: Bool
     var url: URL
 
-    func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
+    func makeCoordinator() -> Coordinator {
+        Coordinator(parent: self)
     }
 
-    func updateUIView(_ webView: WKWebView, context: Context) {
-        let request = URLRequest(url: url)
-        webView.load(request)
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.navigationDelegate = context.coordinator
+        webView.load(URLRequest(url: url))
+        return webView
     }
-}
-  
-extension WKWebView {
-    override open var safeAreaInsets: UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+    func updateUIView(_ uiView: WKWebView, context: Context) {
     }
 }

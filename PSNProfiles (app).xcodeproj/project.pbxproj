@@ -35,16 +35,6 @@
 			path = "PSNProfiles (app)";
 			sourceTree = "<group>";
 		};
-		363893C92CB4912800662372 /* PSNProfiles (app)Tests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "PSNProfiles (app)Tests";
-			sourceTree = "<group>";
-		};
-		363893D32CB4912800662372 /* PSNProfiles (app)UITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "PSNProfiles (app)UITests";
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				363893B82CB4912600662372 /* PSNProfiles (app) */,
-				363893C92CB4912800662372 /* PSNProfiles (app)Tests */,
-				363893D32CB4912800662372 /* PSNProfiles (app)UITests */,
 				363893B72CB4912600662372 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				363893C82CB4912800662372 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				363893C92CB4912800662372 /* PSNProfiles (app)Tests */,
-			);
 			name = "PSNProfiles (app)Tests";
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				363893D22CB4912800662372 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				363893D32CB4912800662372 /* PSNProfiles (app)UITests */,
 			);
 			name = "PSNProfiles (app)UITests";
 			packageProductDependencies = (
@@ -412,7 +394,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aarondoe.psnapp.PSNProfiles--app-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -449,7 +431,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aarondoe.psnapp.PSNProfiles--app-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
