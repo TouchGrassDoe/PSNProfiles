@@ -27,6 +27,9 @@ struct ContentView: View {
                 Image(systemName: "house")
                 Text("Home")
             }
+            .onAppear {
+                loadHomePage()
+            }
 
             NavigationView {
                 NewsView()
@@ -44,6 +47,11 @@ struct ContentView: View {
                 Text("Settings")
             }
         }
+    }
+    
+    private func loadHomePage() {
+        let request = URLRequest(url: homeURL)
+        webView?.load(request)
     }
 }
 
